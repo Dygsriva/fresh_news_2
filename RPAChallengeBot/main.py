@@ -3,17 +3,21 @@ import urllib3
 import os
 import sys
 import re
+import json
 import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from RPA.Browser.Selenium import Selenium
+from robocorp.tasks import task
+
+@task
 
 # Logger configuration.
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Test variables.
+# Set variables.
 
 searchPhrase = 'Biden'
 newsCategory = 'Politics'
