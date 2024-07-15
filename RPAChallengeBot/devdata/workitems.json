@@ -1,0 +1,10 @@
+[
+    {
+        "payload": {
+           "searchPhrase": "Biden",
+           "newsCategory": "Politics",
+           "numberOfMonths": 1
+        },
+        "files": {}
+    }
+  ]
