@@ -221,8 +221,10 @@ class ExcelControl:
             {'Title': obj.title, 'Description': obj.description, 'Date': obj.date, 'Image Name': obj.imageName, 'Number of Search Phrase on info': obj.countSearchPhrase, 'Contains Currency': obj.containsCurrency}
             for obj in newsList
         ]
+        folderPath = os.path.join(os.getcwd(), 'output')
+        folderPath = os.path.join(folderPath, 'FreshNews.xlsx')
         df = pd.DataFrame(data)
-        df.to_excel("output\FreshNews.xlsx", index=False)
+        df.to_excel(folderPath, index=False)
         logging.info("Saved Excel file as FreshNews.xlsx")
 
 @task  
