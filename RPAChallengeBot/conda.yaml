@@ -30,3 +30,4 @@ dependencies:
     - uiautomation==2.0.20
     - urllib3==2.2.2
     - webdriver-manager==4.0.1
+    - pywin32==306
