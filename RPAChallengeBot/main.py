@@ -22,8 +22,7 @@ class BrowserControl:
     def open_browser_and_navigate(self):
         # Open the Chrome browser and navigate to the news site.
         logging.info("Opening Chrome Browser")
-        self.browser.open_browser("https://www.latimes.com", 'Chrome')
-        self.browser.maximize_browser_window()
+        self.browser.open_available_browser("https://www.latimes.com", browser_selection="chrome", maximized=True)
         logging.info("Opened Browser successfully")
 
     def search_phrase(self, textToSearch):
