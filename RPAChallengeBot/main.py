@@ -3,6 +3,7 @@ import urllib3
 import os
 import sys
 import re
+import requests
 import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -177,14 +178,25 @@ class BrowserControl:
 
     def download_image(self, imageURL, imageName):
         # Download image from the news.
-        folderPath = os.path.dirname(os.path.dirname(sys.executable)) + "\output\\" + imageName + '.png'
+        '''folderPath = os.path.dirname(os.path.dirname(sys.executable)) + "\output\\" + imageName + '.png'
         print(folderPath)
         http = urllib3.PoolManager()
         response = http.request('GET', imageURL)
         with open(folderPath, 'wb') as file:
             file.write(response.data)
         logging.info(f"Image saved successfully")
-        http.clear()
+        http.clear()'''
+
+        imageName = imageName + '.png'
+        folderPath = os.path.join(os.getcwd(), 'output')
+        response = requests.get(imageURL)
+        if response.status_code == 200:
+            folderPath = os.path.join(folderPath, imageName)
+            with open(folderPath, 'wb') as file:
+                file.write(response.content)
+            print(f"Image successfully downloaded: {folderPath}")
+        else:
+            print(f"Failed to retrieve image from {imageURL}")
 
     def calculate_date(self, months):
         # Calculate the date for the search by months (if zero, set to 1).
